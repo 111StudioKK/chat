@@ -7,8 +7,8 @@ angular.module('chat', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.r
                 url: '/login',
                 templateUrl: 'app/login/login.html',
                 controller: 'LoginCtrl'
-            }).state('admin', {
-                url: '/admin',
+            }).state('main', {
+                url: '/main',
                 templateUrl: 'app/main/main.html',
                 controller: 'MainCtrl',
                 resolve: {
