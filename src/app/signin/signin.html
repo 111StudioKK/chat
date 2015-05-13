@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-4">
-        <form name="form" class="form-validation auth" ng-submit="sendCredentials(user)" autocomplete="on" form-autofill-fix>
+        <form name="form" class="form-validation auth" ng-submit="sendSigninCredentials(user)" autocomplete="on" form-autofill-fix>
             <div class="text-danger wrapper text-center" ng-show="error">
                 <p>{{ error }}</p>
             </div>
@@ -10,8 +10,10 @@
             <div class="form-group">
                 <input name="password" type="password" placeholder="{{'Password'}}" class="form-control" ng-model="user.password" required ng-minlength="6" ng-maxlength="64">
             </div>
-            <button type="submit" class="btn btn-sm btn-primary btn-rounded btn-block" ng-disabled='form.$invalid'>Login</button>
+            <div class="form-group">
+                <input name="passwordConfirm" type="password" placeholder="{{'Confirm password'}}" class="form-control" ng-model="passwordConfirm" required ng-minlength="6" ng-pattern="{{user.password}}" ng-maxlength="64">
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary btn-rounded btn-block" ng-disabled='form.$invalid'>Sign in</button>
         </form>
     </div>
-    <div ui-sref="signin">Sign in</div>
 </div>
