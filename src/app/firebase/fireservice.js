@@ -10,6 +10,11 @@ angular.module('chat')
             return auth.$authWithPassword(credentials);
         };
 
+        service.signin = function(credentials) {
+            console.log(credentials);
+            return auth.$createUser(credentials);
+        };
+
         service.isLogged = function() {
             return !!auth.$getAuth();
         };
