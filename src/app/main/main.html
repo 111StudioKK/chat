@@ -1,13 +1,15 @@
-<h1>Main</h1>
-<button class="btn btn-danger" ng-click="logout()">Logout</button>
-<div class="row">
-<div class="panel">
-  <ul class="list-group">
-  <li class="list-group-item" ng-repeat="mess in messages">
-    {{mess.author}} > {{mess.content}}
-  </li>
-  </ul>
-</div>
-<input type="text" ng-model="message.content">
-<button class="btn btn-success" ng-click="addMessage()" ng-disabled="!message.content">Post</button>
+<div>
+	<h1>Main</h1>
+	<button class="btn btn-danger" ng-click="logout()">Logout</button>
+	<div class="row">
+		<div class="panel">
+		  <ul class="list-group">
+		  <li class="list-group-item" ng-repeat="mess in messages">
+		    <span class="chat-message-author">{{mess.author}}</span> > {{mess.content}}
+		  </li>
+		  </ul>
+		</div>
+	</div>
+	<input type="text" ng-model="message.content">
+	<button class="btn btn-success" ng-click="addMessage()" ng-disabled="!message.content">Post</button>
 </div>
