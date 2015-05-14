@@ -12,21 +12,20 @@ angular.module('chat', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.r
                 templateUrl: 'app/main/main.html',
                 controller: 'MainCtrl',
                 resolve: {
-                	messages: function(fireService){
-                		return fireService.getMessages();
-                	}
+                    messages: function(fireService){
+                        return fireService.getMessages();
+                    }
                 }
             });
         $urlRouterProvider.otherwise('/login');
     }).run(function(fireService, $state){
 
-    	fireService.authObj.$onAuth(function(authData){
-    		if(authData){
-    			$state.go('main');
-    		}
-    		else{
-    			$state.go('login');
-    		}
-    	});
-    	
+        fireService.authObj.$onAuth(function(authData){
+            if(authData){
+                $state.go('main');
+            }
+            else{
+                $state.go('login');
+            }
+        });
     });
