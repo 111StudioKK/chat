@@ -48,6 +48,11 @@ angular.module('chat')
             // get connected users
         };*/
 
+    }).filter( 'userNick', function(userFireService){
+        var userDAO = userFireService;
+        return function(input) {
+            return userDAO.get(input)?userDAO.get(input).nick:input;
+        };
     }).run(function(userFireService, fireService){
         var userDAO = userFireService;
         var connectedUser = null;
