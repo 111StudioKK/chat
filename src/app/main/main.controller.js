@@ -19,6 +19,6 @@ angular.module('chat')
 
     userService.loaded().then( function(){
       $scope.message.author = userService.get(fireService.userData().uid).nick;
-    } )
+    });
 
   });

@@ -48,7 +48,7 @@ angular.module('chat')
             // get connected users
         };*/
 
-    }).run(function(userFireService, fireService, $state){
+    }).run(function(userFireService, fireService){
         var userDAO = userFireService;
         var connectedUser = null;
 
