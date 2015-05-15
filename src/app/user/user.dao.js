@@ -8,7 +8,7 @@ angular.module('chat')
 
         userDAO.loaded = function() {
             return users.$loaded();
-        }
+        };
 
         userDAO.create = function(user) {
             users[user.id] = user;
