@@ -3,8 +3,10 @@
 angular.module('chat')
     .service('fireService', function($firebaseAuth, $firebaseArray) {
         var service = this;
-        var fireRef = new Firebase('https://chat111.firebaseio.com');
-        var auth = $firebaseAuth(fireRef);
+
+        service.fireRef = new Firebase('https://chat111.firebaseio.com');
+
+        var auth = $firebaseAuth(service.fireRef);
 
         service.auth = function(credentials) {
             return auth.$authWithPassword(credentials);
@@ -14,6 +16,11 @@ angular.module('chat')
             console.log(credentials);
             return auth.$createUser(credentials);
         };
+
+        // Impossible for now, TODO
+        /*service.deleteUser = function(userId) {
+            return auth.$removeUser(userId);
+        };*/
 
         service.isLogged = function() {
             return !!auth.$getAuth();
@@ -25,9 +32,15 @@ angular.module('chat')
         service.logout = function() {
             auth.$unauth();
         };
+        service.converter = function(user) {
+            return {
+                email:user.email,
+                password: user.password
+            };
+        };
 
         service.getMessages = function() {
-            var messagesRef = fireRef.child('messages');
+            var messagesRef = service.fireRef.child('messages');
             return $firebaseArray(messagesRef);
         };
 

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('chat')
-    .controller('SigninCtrl', function ($scope, fireService) {
+    .controller('SigninCtrl', function ($scope, userService, fireService) {
         $scope.sendSigninCredentials = function(credentials) {
-            fireService.signin(credentials).then(function(data){
+            userService.create(credentials).then(function(data){
                 /* If sign in succeed, we connect */
                 fireService.auth(credentials).then(function(data){
                     console.log(data);
