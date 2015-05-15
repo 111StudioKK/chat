@@ -13,7 +13,10 @@
             <div class="form-group">
                 <input name="passwordConfirm" type="password" placeholder="{{'Confirm password'}}" class="form-control" ng-model="passwordConfirm" required ng-minlength="6" ng-pattern="{{user.password}}" ng-maxlength="64">
             </div>
-            <button type="submit" class="btn btn-sm btn-primary btn-rounded btn-block" ng-disabled='form.$invalid'>Sign in</button>
+             <div class="form-group merged">
+                <input name="nickname" type="text" placeholder="{{'Nickname'}}" class="form-control" ng-model="user.nick" required ng-minlength="6" ng-maxlength="64">
+            </div>
+           <button type="submit" class="btn btn-sm btn-primary btn-rounded btn-block" ng-disabled='form.$invalid'>Sign in</button>
         </form>
     </div>
 </div>
