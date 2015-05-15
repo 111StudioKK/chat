@@ -18,7 +18,7 @@ angular.module('chat')
 
         userDAO.delete = function(userId) {
             // Delete data
-            unset(users[user.id]);
+            delete users[userId];
             return users.$save();
         };
 
@@ -27,7 +27,8 @@ angular.module('chat')
             return {
                 id: data.id,
                 nick: data.nick,
-                email: data.email
+                email: data.email,
+                isConnected: false
             };
         };
 
@@ -37,5 +38,14 @@ angular.module('chat')
 
         userDAO.getAll = function() {
             return users;
+        };
+
+        // Set flag for connection using userId and boolean
+        userDAO.setConnected = function(userId, bool) {
+            if ( users[userId] ){
+                users[userId].isConnected = bool;
+                return users.$save();
+            }
+            return false;
         };
     });

@@ -39,4 +39,19 @@ angular.module('chat')
         userBO.getConnectedUser = function() {
             // get connected users
         };*/
+
+    }).run(function(userFireService, fireService, $state){
+        var userDAO = userFireService;
+        var connectedUser = null;
+
+        // handling connection flag
+        fireService.authObj.$onAuth( function(authData) {
+            if ( authData ) {
+                connectedUser = authData.uid;
+                userDAO.setConnected(connectedUser, true);
+            } else if ( connectedUser ) {
+                userDAO.setConnected(connectedUser, false);
+                connectedUser = null;
+            }
+        });
     });
