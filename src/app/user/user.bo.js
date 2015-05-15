@@ -5,6 +5,10 @@ angular.module('chat')
         var userBO = this;
         var userDAO = userFireService; // change that (config?)
 
+        userBO.loaded = function() {
+            return userDAO.loaded();
+        };
+
         userBO.create = function(user) {
             // Firebase user creation
             return fireService.signin(fireService.converter(user)).then( function(userData) {
@@ -31,6 +35,10 @@ angular.module('chat')
                 return fireService.deleteUser(userId);
             });
         };*/
+
+        userBO.get = function(userId) {
+            return userDAO.get(userId);
+        };
 
         userBO.getAll = function() {
             return userDAO.getAll();

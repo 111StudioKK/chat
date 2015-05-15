@@ -1,13 +1,9 @@
 'use strict';
 
 angular.module('chat')
-  .controller('MainCtrl', function ($scope, fireService , messages) {
+  .controller('MainCtrl', function ($scope, userService, fireService , messages) {
     $scope.messages = messages;
-
     $scope.message = {};
-
-    $scope.message.author = fireService.userData().uid;
-
 
     $scope.logout = function(){
       fireService.logout();
@@ -20,4 +16,9 @@ angular.module('chat')
       $scope.message.content = '';
 
     };
+
+    userService.loaded().then( function(){
+      $scope.message.author = userService.get(fireService.userData().uid).nick;
+    } )
+
   });

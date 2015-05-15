@@ -6,6 +6,10 @@ angular.module('chat')
         var usersRef = fireService.fireRef.child('users');
         var users = $firebaseObject(usersRef);
 
+        userDAO.loaded = function() {
+            return users.$loaded();
+        }
+
         userDAO.create = function(user) {
             users[user.id] = user;
             return users.$save();
