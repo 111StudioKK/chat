@@ -23,7 +23,6 @@ angular.module('chat', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.r
             });
         $urlRouterProvider.otherwise('/login');
     }).run(function(fireService, $state){
-
         fireService.authObj.$onAuth(function(authData){
             if(authData){
                 $state.go('main');
