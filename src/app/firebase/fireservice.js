@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('chat')
-    .service('fireService', function($firebaseAuth, $firebaseArray) {
+    .service('fireService', function($firebaseAuth, $firebaseArray, config) {
         var service = this;
 
-        service.fireRef = new Firebase('https://chat111.firebaseio.com');
+        service.fireRef = new Firebase(config.firebaseURL);
 
         var auth = $firebaseAuth(service.fireRef);
 
