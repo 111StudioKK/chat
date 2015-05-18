@@ -1,3 +1,17 @@
 .chat-message-author {
   font-weight: bold;
 }
+
+body {
+  margin: auto;
+  width: 600px;
+}
+
+.ng-scope .row {
+    height: 250px;
+    overflow: auto;
+}
+
+.ng-scope .row li{
+    border:0px;
+}
