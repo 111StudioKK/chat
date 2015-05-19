@@ -5,7 +5,7 @@
         <div class="panel">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="mess in messages">
-                    <span class="chat-message-author">{{mess.author | userNick}}</span> > {{mess.content}}
+                    [<span class="chat-message-date">{{mess.createdAt | date : 'yyyy/MM/dd HH:mm:ss'}}</span>] <span class="chat-message-author">{{mess.author | userNick}}</span> > {{mess.content}}
                 </li>
             </ul>
         </div>
