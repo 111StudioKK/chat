@@ -29,9 +29,11 @@ angular.module('chat')
         service.userData = function() {
             return auth.$getAuth();
         };
+
         service.logout = function() {
             auth.$unauth();
         };
+
         service.converter = function(user) {
             return {
                 email:user.email,
