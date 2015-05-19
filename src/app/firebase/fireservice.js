@@ -41,7 +41,7 @@ angular.module('chat')
 
         service.getMessages = function() {
             var messagesRef = service.fireRef.child('messages');
-            var timestamp = (new Date()).getTime() - 1000*60*60*24*4;
+            var timestamp = (new Date()).getTime()-1000*60*60*24*4;
             return $firebaseArray(messagesRef.orderByChild('createdAt').startAt(timestamp));
         };
 
