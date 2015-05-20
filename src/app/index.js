@@ -16,8 +16,8 @@ angular.module('chat', ['chat.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngS
                 templateUrl: 'app/main/main.html',
                 controller: 'MainCtrl',
                 resolve: {
-                    messages: function(fireService){
-                        return fireService.getMessages();
+                    messages: function(messageService){
+                        return messageService.getLastMessages();
                     }
                 }
             });

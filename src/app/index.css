@@ -7,11 +7,41 @@ body {
     width: 600px;
 }
 
-.ng-scope .row {
+.ng-scope .chat-panel {
     height: 250px;
     overflow: auto;
 }
 
-.ng-scope .row li{
+.ng-scope .chat-panel li{
     border:0px;
+}
+
+.chat-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.chat-panel {
+    border: 1px solid #999;
+    position: relative;
+    clear: both;
+}
+
+div.title {
+    font-size: 30px;
+    display: inline-block;
+}
+
+.btn-logout {
+    float: right;
+    margin: 5px;
+}
+
+.chat-message {
+    margin-top: 5px;
+}
+
+.chat-message input {
+    width: 540px;
 }
