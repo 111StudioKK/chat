@@ -29,19 +29,16 @@ angular.module('chat')
         service.userData = function() {
             return auth.$getAuth();
         };
+
         service.logout = function() {
             auth.$unauth();
         };
+
         service.converter = function(user) {
             return {
                 email:user.email,
                 password: user.password
             };
-        };
-
-        service.getMessages = function() {
-            var messagesRef = service.fireRef.child('messages');
-            return $firebaseArray(messagesRef);
         };
 
         service.authObj = auth;
