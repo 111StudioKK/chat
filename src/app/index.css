@@ -45,3 +45,7 @@ div.title {
 .chat-message input {
     width: 540px;
 }
+
+.chat-message-action {
+    color: #909;
+}

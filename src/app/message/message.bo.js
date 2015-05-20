@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chat')
-    .service('messageService', function(messageFireService) {
+    .service('messageService', function(messageFireService, $filter) {
         var messageBO = this;
         var messageDAO = messageFireService;
 
@@ -17,12 +17,34 @@ angular.module('chat')
             return messageDAO.getLastMessages();
         };
 
-    }).filter( 'messageRendering', function($filter){
-        return function(input) {
+        messageBO.getRenderedDate = function(message) {
             return '[<span class=\"chat-message-date\">' +
-                $filter('date')(input.createdAt, 'HH:mm') +
-                '</span>] <span class=\"chat-message-author\">' +
-                $filter('userNick')( input.author ) +
-                '</span> > ' + input.content;
+                $filter('date')(message.createdAt, 'HH:mm') +
+                '</span>]';
+        };
+
+        messageBO.getRenderedText = function(message) {
+            if ( getAction(message) ) {
+                return '<span class=\"chat-message-action\"><span class=\"chat-message-author\">' +
+                    $filter('userNick')( message.author ) + '</span> ' +
+                    message.content.split(getAction(message)[0])[1] + '</span>';
+            } else {
+                return '<span class=\"chat-message-author\">' +
+                    $filter('userNick')( message.author ) +
+                    '</span> > ' + message.content;
+            }
+        };
+
+        messageBO.getRender = function(message) {
+            return messageBO.getRenderedDate(message) + ' ' + messageBO.getRenderedText(message);
+        }
+
+        // Private function
+        var getAction = function(message) {
+            return message.content.match(/^\/me\ /);
+        }
+    }).filter( 'messageRendering', function(messageService){
+        return function(input) {
+            return messageService.getRender(input);
         };
     });
