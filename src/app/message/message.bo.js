@@ -24,10 +24,10 @@ angular.module('chat')
         };
 
         messageBO.getRenderedText = function(message) {
-            if ( getAction(message) ) {
+            if ( _getAction(message) ) {
                 return '<span class=\"chat-message-action\"><span class=\"chat-message-author\">' +
                     $filter('userNick')( message.author ) + '</span> ' +
-                    message.content.split(getAction(message)[0])[1] + '</span>';
+                    message.content.split(_getAction(message)[0])[1] + '</span>';
             } else {
                 return '<span class=\"chat-message-author\">' +
                     $filter('userNick')( message.author ) +
@@ -39,8 +39,8 @@ angular.module('chat')
             return messageBO.getRenderedDate(message) + ' ' + messageBO.getRenderedText(message);
         }
 
-        // Private function
-        var getAction = function(message) {
+        // Private functions
+        var _getAction = function(message) {
             return message.content.match(/^\/me\ /);
         }
     }).filter( 'messageRendering', function(messageService){
