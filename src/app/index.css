@@ -43,9 +43,46 @@ div.title {
 }
 
 .chat-message input {
-    width: 540px;
+    width: 500px;
 }
 
 .chat-message-action {
     color: #909;
+}
+
+.popup-settings {
+    outline: 1px solid #909;
+    width: 400px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, .9);
+    position: inherit;
+    top: 70px;
+    left: 100px;
+    padding: 5px;
+}
+
+.popup-layer {
+    position: absolute;
+    top:0;
+}
+.container {
+    display: block;
+    width: auto;
+}
+
+.popup-row {
+    margin:auto;
+    text-align: center;
+}
+
+.popup-bottom {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: auto;
+    display: inline-block;
+}
+
+.popup-settings form {
+    height:100%;
 }
