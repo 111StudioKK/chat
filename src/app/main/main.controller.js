@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('chat')
-    .controller('MainCtrl', function ($scope, fireService, messages, messageService, settingsService) {
-        $scope.messages = messages;
-        $scope.message = {};
-        $scope.messageService = messageService;
+    .controller('MainCtrl', function (fireService, messages, messageService, settingsService) {
+        var main = this;
+        main.messages = messages;
+        main.message = {};
 
-        $scope.logout = function(){
+        main.logout = function(){
             fireService.logout();
         };
 
-        $scope.settings = function(){
+        main.settings = function(){
             settingsService.show();
         };
 
-        $scope.addMessage = function(){
-            $scope.message.author = fireService.userData().uid;
-            $scope.messageService.add($scope.message);
-            $scope.message.content = '';
+        main.addMessage = function(){
+            main.message.author = fireService.userData().uid;
+            messageService.add(main.message);
+            main.message.content = '';
         };
   });
