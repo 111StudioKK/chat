@@ -37,12 +37,12 @@ angular.module('chat')
 
         messageBO.getRender = function(message) {
             return messageBO.getRenderedDate(message) + ' ' + messageBO.getRenderedText(message);
-        }
+        };
 
         // Private functions
         var _getAction = function(message) {
             return message.content.match(/^\/me\ /);
-        }
+        };
     }).filter( 'messageRendering', function(messageService){
         return function(input) {
             return messageService.getRender(input);

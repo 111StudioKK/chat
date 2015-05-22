@@ -14,7 +14,7 @@ angular.module('chat')
             return fireService.signin(fireService.converter(user)).then( function(userData) {
                 // User VO creation in case of success
                 user.id = userData.uid;
-                return userDAO.create(userDAO.converter(user));
+                return userDAO.create(userBO.getConverted(user));
             });
 
         };
@@ -22,7 +22,7 @@ angular.module('chat')
         userBO.modify = function(user) {
             // Verification of data
             // Save data in db
-            return userDAO.modify(userDAO.convert(user));
+            return userDAO.modify(userBO.getConverted(user));
         };
 
         /* Because of ghost users risk, won't do that for now.
@@ -40,9 +40,17 @@ angular.module('chat')
             return userDAO.get(userId);
         };
 
+        userBO.getMe = function() {
+            return userBO.get(fireService.userData().uid);
+        };
+
         userBO.getAll = function() {
             return userDAO.getAll();
         };
+
+        userBO.getConverted = function(user) {
+            return userDAO.converter(user);
+        }
 /*
         userBO.getConnectedUser = function() {
             // get connected users

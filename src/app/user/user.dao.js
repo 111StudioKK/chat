@@ -32,7 +32,7 @@ angular.module('chat')
                 id: data.id,
                 nick: data.nick,
                 email: data.email,
-                isConnected: false
+                isConnected: data.isConnected || false
             };
         };
 
