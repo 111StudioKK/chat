@@ -2,14 +2,15 @@
 
 angular.module('chat')
     /* Login controller definition */
-    .controller('LoginCtrl', function ($scope, fireService) {
+    .controller('LoginCtrl', function (fireService) {
+        var login = this;
         /* Click on the login button */
-        $scope.sendCredentials = function(credentials){
+        login.sendCredentials = function(credentials){
             fireService.auth(credentials).then(function(data){
                 console.log(data);
             }).catch(function(error){
                 console.log(error);
-                $scope.error = error.message;
+                login.error = error.message;
             });
         };
     });

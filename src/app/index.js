@@ -6,15 +6,15 @@ angular.module('chat', ['chat.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngS
             .state('login', {
                 url: '/login',
                 templateUrl: 'app/login/login.html',
-                controller: 'LoginCtrl'
+                controller: 'LoginCtrl as login'
             }).state('signin', {
                 url: '/signin',
                 templateUrl: 'app/signin/signin.html',
-                controller: 'SigninCtrl'
+                controller: 'SigninCtrl as signin'
             }).state('main', {
                 url: '/main',
                 templateUrl: 'app/main/main.html',
-                controller: 'MainCtrl',
+                controller: 'MainCtrl as main',
                 resolve: {
                     messages: function(messageService){
                         return messageService.getLastMessages();

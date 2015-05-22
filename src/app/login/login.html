@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-sm-4">
-        <form name="form" class="form-validation auth" ng-submit="sendCredentials(user)" autocomplete="on" form-autofill-fix>
-            <div class="text-danger wrapper text-center" ng-show="error">
-                <p>{{ error }}</p>
+        <form name="form" class="form-validation auth" ng-submit="login.sendCredentials(user)" autocomplete="on" form-autofill-fix>
+            <div class="text-danger wrapper text-center" ng-show="login.error">
+                <p>{{ login.error }}</p>
             </div>
             <div class="form-group merged">
                 <input name="email" type="email" placeholder="{{'Email'}}" class="form-control" ng-model="user.email" required>
