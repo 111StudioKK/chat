@@ -50,7 +50,7 @@ angular.module('chat')
 
         userBO.getConverted = function(user) {
             return userDAO.converter(user);
-        }
+        };
 /*
         userBO.getConnectedUser = function() {
             // get connected users
