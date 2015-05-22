@@ -1,23 +1,22 @@
 'use strict';
 
 angular.module('chat')
-  .controller('MainCtrl', function ($scope, fireService , messages) {
-    $scope.messages = messages;
+    .controller('MainCtrl', function (fireService, messages, messageService, settingsService) {
+        var main = this;
+        main.messages = messages;
+        main.message = {};
 
-    $scope.message = {};
+        main.logout = function(){
+            fireService.logout();
+        };
 
-    $scope.message.author = fireService.userData().uid;
+        main.settings = function(){
+            settingsService.show();
+        };
 
-
-    $scope.logout = function(){
-      fireService.logout();
-    };
-
-    $scope.addMessage = function(){
-
-      $scope.message.createdAt = Firebase.ServerValue.TIMESTAMP;
-      $scope.messages.$add($scope.message);
-      $scope.message.content = '';
-
-    };
+        main.addMessage = function(){
+            main.message.author = fireService.userData().uid;
+            messageService.add(main.message);
+            main.message.content = '';
+        };
   });

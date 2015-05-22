@@ -1,14 +1,88 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+.chat-message-author {
+    font-weight: bold;
 }
 
-.thumbnail {
-  height: 200px;
+body {
+    margin: auto;
+    width: 600px;
 }
 
-.thumbnail img.pull-right {
-  width: 50px;
+.ng-scope .chat-panel {
+    height: 250px;
+    overflow: auto;
+}
+
+.ng-scope .chat-panel li{
+    border:0px;
+}
+
+.chat-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.chat-panel {
+    border: 1px solid #999;
+    position: relative;
+    clear: both;
+}
+
+div.title {
+    font-size: 30px;
+    display: inline-block;
+}
+
+.btn-logout {
+    float: right;
+    margin: 5px;
+}
+
+.chat-message {
+    margin-top: 5px;
+}
+
+.chat-message input {
+    width: 500px;
+}
+
+.chat-message-action {
+    color: #909;
+}
+
+.popup-settings {
+    outline: 1px solid #909;
+    width: 400px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, .9);
+    position: inherit;
+    top: 70px;
+    left: 100px;
+    padding: 5px;
+}
+
+.popup-layer {
+    position: absolute;
+    top:0;
+}
+.container {
+    display: block;
+    width: auto;
+}
+
+.popup-row {
+    margin:auto;
+    text-align: center;
+}
+
+.popup-bottom {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: auto;
+    display: inline-block;
+}
+
+.popup-settings form {
+    height:100%;
 }
