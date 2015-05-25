@@ -18,6 +18,9 @@ angular.module('chat', ['chat.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngS
                 resolve: {
                     messages: function(messageService){
                         return messageService.getLastMessages();
+                    },
+                    users: function(userService){
+                        return userService.getAll();
                     }
                 }
             });

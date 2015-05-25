@@ -59,7 +59,17 @@ angular.module('chat')
     }).filter( 'userNick', function(userFireService){
         var userDAO = userFireService;
         return function(input) {
-            return userDAO.get(input)?userDAO.get(input).nick:input;
+            return input.nick ?
+                    input.nick :
+                    (userDAO.get(input)?
+                        userDAO.get(input).nick:
+                        input);
+        };
+    }).filter( 'userStatus', function($filter){
+        return function(user) {
+            var status = (user.isConnected)?'status-online':'status-offline';
+            return '<span class=\"chat-user ' + status + '\">' +
+                    $filter('userNick')( user ) + '</span>';
         };
     }).run(function(userFireService, fireService){
         var userDAO = userFireService;

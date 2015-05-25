@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('chat')
-    .controller('MainCtrl', function (fireService, messages, messageService, settingsService, $element) {
+    .controller('MainCtrl', function (fireService, messages, users, messageService, settingsService, $element) {
         var main = this;
         main.messages = messages;
+        main.users = users;
         main.message = {};
 
         main.logout = function(){
