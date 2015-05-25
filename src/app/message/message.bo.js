@@ -29,14 +29,14 @@ angular.module('chat')
                     $filter('userNick')( message.author ) + '</span> ' +
                     message.content.split(_getAction(message)[0])[1] + '</span>';
             } else {
-                return '<span class=\"chat-message-author\">' +
+                return '<span class=\"chat-message-author\">&lt;' +
                     $filter('userNick')( message.author ) +
-                    '</span> > ' + message.content;
+                    '&gt;</span> ' + message.content;
             }
         };
 
         messageBO.getRender = function(message) {
-            return messageBO.getRenderedDate(message) + ' ' + messageBO.getRenderedText(message);
+            return messageBO.getRenderedDate(message) + messageBO.getRenderedText(message);
         };
 
         // Private functions
