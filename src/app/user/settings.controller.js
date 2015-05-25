@@ -1,6 +1,6 @@
 'use strict';
 
-var settingsCtrl = function(settingsService, userService) {
+var settingsCtrl = function(settingsService) {
     var settingsCtrl = this;
 
     settingsCtrl.data = {};
@@ -17,7 +17,7 @@ var settingsCtrl = function(settingsService, userService) {
 angular.module('chat')
     .service('settingsService', function(userService){
         var service = this;
-        service.show = function(ctrl) {
+        service.show = function() {
             service.controller.ctrl.data = userService.getConverted(userService.getMe());
             service.popupElement.removeClass('hidden');
         };

@@ -17,15 +17,32 @@ body {
 }
 
 .chat-text {
-    position: absolute;
     bottom: 0;
-    width: 100%;
+    outline: 1px solid #099;
 }
 
 .chat-panel {
-    border: 1px solid #999;
+    outline: 1px solid #999;
     position: relative;
+    overflow: scroll;
+    width: 470px;
+    font-family: "DejaVu Sans Mono";
+}
+
+.chat-users {
+    outline: 1px solid #909;
+    width: 99px;
+    height: 250px;
     clear: both;
+    float: right;
+}
+
+.chat-user.status-online {
+    color: #090;
+}
+
+.chat-user.status-offline {
+    color: #CCC;
 }
 
 div.title {

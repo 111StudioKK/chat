@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('chat')
-    .controller('MainCtrl', function (fireService, messages, messageService, settingsService) {
+    .controller('MainCtrl', function (fireService, messages, users, messageService, settingsService, $element) {
         var main = this;
         main.messages = messages;
+        main.users = users;
         main.message = {};
 
         main.logout = function(){
@@ -19,4 +20,9 @@ angular.module('chat')
             messageService.add(main.message);
             main.message.content = '';
         };
+
+        messages.$watch(function(){
+            var elem = $element[0].children[0].children[3];
+            elem.scrollTop = elem.scrollHeight;
+        });
   });

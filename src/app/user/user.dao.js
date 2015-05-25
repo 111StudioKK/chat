@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('chat')
-    .service('userFireService', function(fireService, $firebaseObject) {
+    .service('userFireService', function(fireService, $firebaseObject, $firebaseArray) {
         var userDAO = this;
         var usersRef = fireService.fireRef.child('users');
         var users = $firebaseObject(usersRef);
+        var userList = $firebaseArray(usersRef);
 
         userDAO.loaded = function() {
             return users.$loaded();
@@ -41,7 +42,7 @@ angular.module('chat')
         };
 
         userDAO.getAll = function() {
-            return users;
+            return userList;
         };
 
         // Set flag for connection using userId and boolean
