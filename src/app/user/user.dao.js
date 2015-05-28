@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('chat')
-    .service('userFireService', function(fireService, $firebaseObject, $firebaseArray) {
+    .service('userFireService', function(fireService, $firebaseObject, $firebaseArray, config) {
         var userDAO = this;
         var usersRef = fireService.fireRef.child('users');
         var users = $firebaseObject(usersRef);
         var userList = $firebaseArray(usersRef);
+        var awayTime = config.awayTime;
 
         userDAO.loaded = function() {
             return users.$loaded();
@@ -33,8 +34,13 @@ angular.module('chat')
                 id: data.id,
                 nick: data.nick,
                 email: data.email,
+                lastInteraction: data.lastInteraction || 0,
                 isConnected: data.isConnected || false
             };
+        };
+
+        userDAO.isAway = function(user) {
+            return user.lastInteraction < (new Date()).getTime()-1000*60*awayTime;
         };
 
         userDAO.get = function(userId) {
@@ -49,6 +55,9 @@ angular.module('chat')
         userDAO.setConnected = function(userId, bool) {
             if ( users[userId] ){
                 users[userId].isConnected = bool;
+                if (bool) {
+                    users[userId].lastInteraction = Firebase.ServerValue.TIMESTAMP;
+                }
                 return users.$save();
             }
             return false;

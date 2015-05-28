@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chat')
-    .controller('MainCtrl', function (fireService, messages, users, messageService, settingsService, $element) {
+    .controller('MainCtrl', function (fireService, messages, users, messageService, userService, settingsService, $element) {
         var main = this;
         main.messages = messages;
         main.users = users;
@@ -18,6 +18,7 @@ angular.module('chat')
         main.addMessage = function(){
             main.message.author = fireService.userData().uid;
             messageService.add(main.message);
+            userService.updateLastInteraction();
             main.message.content = '';
         };
 
