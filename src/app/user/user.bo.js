@@ -25,6 +25,12 @@ angular.module('chat')
             return userDAO.modify(userBO.getConverted(user));
         };
 
+        userBO.updateLastInteraction = function() {
+            var me = userBO.getMe();
+            me.lastInteraction = Firebase.ServerValue.TIMESTAMP;
+            return userDAO.modify(me);
+        };
+
         /* Because of ghost users risk, won't do that for now.
          * TODO: delete accound with password asking
         userBO.delete = function(userId) {
@@ -65,24 +71,32 @@ angular.module('chat')
                         userDAO.get(input).nick:
                         input);
         };
-    }).filter( 'userStatus', function($filter){
+    }).filter( 'userStatus', function($filter, userFireService){
+        var userDAO = userFireService;
         return function(user) {
-            var status = (user.isConnected)?'status-online':'status-offline';
+            var status = (user.isConnected)?((userDAO.isAway(user))?'status-away':'status-online'):'status-offline';
             return '<span class=\"chat-user ' + status + '\">' +
                     $filter('userNick')( user ) + '</span>';
         };
-    }).run(function(userFireService, fireService){
+    }).run(function(userFireService, userService, fireService, $rootScope){
         var userDAO = userFireService;
+        var userBO = userService;
         var connectedUser = null;
+        var deregistrationFunction = function(){};
 
         // handling connection flag
         fireService.authObj.$onAuth( function(authData) {
             if ( authData ) {
                 connectedUser = authData.uid;
                 userDAO.setConnected(connectedUser, true);
-            } else if ( connectedUser ) {
+                // handling away status
+                deregistrationFunction = $rootScope.$on('$windowFocus', function() {
+                    userBO.updateLastInteraction();
+                });
+           } else if ( connectedUser ) {
                 userDAO.setConnected(connectedUser, false);
                 connectedUser = null;
+                deregistrationFunction();
             }
         });
     });

@@ -41,6 +41,10 @@ body {
     color: #090;
 }
 
+.chat-user.status-away {
+    color: #F70;
+}
+
 .chat-user.status-offline {
     color: #CCC;
 }

@@ -3,5 +3,6 @@
 angular.module('chat.config', [])
     .constant('config', {
         'firebaseURL': 'https://dazzling-fire-8657.firebaseio.com',
-        'env': 'dev'
+        'env': 'dev',
+        'awayTime': 1
     });
