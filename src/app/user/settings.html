@@ -1,7 +1,7 @@
 <div class="popup-settings">
     <form>
         <div class="popup-row">
-            <span class="popup-label">{{'Nick : '}}</span><input type="text" ng-model="ctrl.data.nick">
+            <formly-form model="ctrl.data" fields="ctrl.fields"></formly-form>
         </div>
         <div class="popup-bottom">
             <button class="btn btn-success" ng-click="ctrl.save()">Save</button>

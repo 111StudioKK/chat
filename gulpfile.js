@@ -17,8 +17,8 @@ var options = {
     };
   },
   wiredep: {
-    directory: 'bower_components',
-    exclude: [/jquery/, /bootstrap\.js/]
+    directory: 'bower_components'
+   // exclude: [/jquery/, /bootstrap\.js/]
   }
 };
 

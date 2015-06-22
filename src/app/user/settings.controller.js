@@ -4,6 +4,17 @@ var settingsCtrl = function(settingsService) {
     var settingsCtrl = this;
 
     settingsCtrl.data = {};
+    settingsCtrl.fields = [
+        {
+            type: 'input',
+            key: 'nick',
+            templateOptions: {
+                placeholder: 'Nick',
+                label: 'Nick',
+                required: true
+            }
+        }
+    ];
 
     settingsCtrl.save = function() {
         settingsService.save(settingsCtrl.data);

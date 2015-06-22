@@ -1,3 +1,7 @@
 {
-  "directory": "bower_components"
+  "directory": "bower_components",
+  "registry" : {
+    "search" : [ "http://bower.111studio.jp" ],
+    "register" : "http://bower.111studio.jp"
+  }
 }

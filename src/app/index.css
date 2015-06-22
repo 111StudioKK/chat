@@ -107,3 +107,16 @@ div.title {
 .popup-settings form {
     height:100%;
 }
+
+label.control-label {
+    display: none;
+}
+
+.popup-settings label.control-label {
+    display: inline-block;
+}
+
+.popup-settings .form-control {
+    display: inline-block;
+    width: auto;
+}

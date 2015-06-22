@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chat', ['chat.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'mgcrea.ngStrap', 'firebase', 'windowEventBroadcasts'])
+angular.module('chat', ['chat.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'mgcrea.ngStrap', 'firebase', 'windowEventBroadcasts', 'formly', 'formlyBootstrap'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('login', {
